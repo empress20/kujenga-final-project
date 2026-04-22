@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surviving, Not Living — Nigeria 2023–2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0d0d1a;font-family:'DM Sans',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+  .container{width:100%;max-width:680px}
+  .stage{background:#111128;border-radius:16px;overflow:hidden;min-height:420px;position:relative}
+  .scene{display:none;flex-direction:column;align-items:center;justify-content:center;padding:32px 28px;min-height:420px;gap:14px;text-align:center;animation:fadeIn 0.5s ease}
+  .scene.active{display:flex}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);font-weight:500}
+  .headline{font-family:'Playfair Display',serif;font-size:26px;color:#fff;line-height:1.3;max-width:480px}
+  .body-text{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7;max-width:460px}
+  .speech-bubble{background:#fff;border-radius:14px;padding:14px 18px;font-size:14px;color:#111;line-height:1.65;max-width:440px;text-align:left;position:relative}
+  .speech-bubble::after{content:'';position:absolute;bottom:-11px;left:28px;width:0;height:0;border-left:11px solid transparent;border-right:11px solid transparent;border-top:11px solid #fff}
+  .speech-bubble.center::after{left:50%;transform:translateX(-50%)}
+  .speech-bubble.tinted-orange{background:#fff5f0}
+  .speech-bubble.tinted-blue{background:#f0f5ff}
+  .speech-bubble.tinted-green{background:#f0fff8}
+  .speaker{font-weight:700;margin-right:4px}
+  .s-amaka{color:#e85d30}
+  .s-emeka{color:#3b8bd4}
+  .s-chidi{color:#1d9e75}
+  .price-grid{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+  .price-card{background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px 16px;text-align:center;min-width:110px}
+  .price-card.danger{background:rgba(226,75,74,0.25);border-color:rgba(226,75,74,0.4)}
+  .price-card .yr{font-size:10px;color:rgba(255,255,255,0.4);margin-bottom:4px}
+  .price-card .amt{font-size:20px;font-weight:500;color:#fff;font-family:'Playfair Display',serif}
+  .price-card .chg{font-size:11px;color:rgba(255,255,255,0.4);margin-top:3px}
+  .price-card.danger .chg{color:#ff8c8c}
+  .chars-row{display:flex;gap:28px;justify-content:center;align-items:flex-end}
+  .char-wrap{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .char-name-tag{font-size:11px;color:rgba(255,255,255,0.7);font-weight:500}
+  .final-btn{margin-top:8px;background:rgba(255,255,255,0.1);border:0.5px solid rgba(255,255,255,0.25);color:#fff;padding:11px 26px;border-radius:8px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s}
+  .final-btn:hover{background:rgba(255,255,255,0.2)}
+  .nav-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:#0a0a18;border-top:0.5px solid rgba(255,255,255,0.06)}
+  .nav-bar button{background:rgba(255,255,255,0.08);border:0.5px solid rgba(255,255,255,0.15);color:#fff;padding:8px 20px;border-radius:7px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s}
+  .nav-bar button:hover{background:rgba(255,255,255,0.15)}
+  .nav-bar button:disabled{opacity:0.25;cursor:not-allowed}
+  .dots{display:flex;gap:6px;align-items:center}
+  .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.2);transition:all 0.3s}
+  .dot.active{background:#fff;width:18px;border-radius:3px}
+  .scene-counter{font-size:11px;color:rgba(255,255,255,0.3);min-width:36px;text-align:right}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="stage">
+
+    <!-- Scene 0: Title -->
+    <div class="scene active" id="s0" style="background:linear-gradient(160deg,#0f0c29 0%,#1a1560 50%,#0f0c29 100%)">
+      <div class="label">A data story · Nigeria 2023–2026</div>
+      <div class="headline">Surviving,<br>Not Living</div>
+      <div class="body-text" style="margin-top:4px">Three ordinary Nigerians. One extraordinary struggle. What the data reveals about life when prices outpace everything.</div>
+      <div class="body-text" style="margin-top:12px;font-size:11px;opacity:0.4">Press Next to begin</div>
+    </div>
+
+    <!-- Scene 1: Meet Amaka -->
+    <div class="scene" id="s1" style="background:linear-gradient(160deg,#1a1a00 0%,#2d3800 50%,#1a2800 100%)">
+      <div class="label">Character 1 · Lagos</div>
+      <svg width="75" height="108" viewBox="0 0 80 110">
+        <circle cx="40" cy="22" r="18" fill="#c68642"/>
+        <ellipse cx="40" cy="22" rx="13" ry="11" fill="#d4956a"/>
+        <circle cx="34" cy="20" r="2.5" fill="#3d2b1f"/><circle cx="46" cy="20" r="2.5" fill="#3d2b1f"/>
+        <path d="M34 28 Q40 33 46 28" stroke="#3d2b1f" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M26 10 Q40 2 54 10 Q50 0 40 0 Q30 0 26 10Z" fill="#8B4513"/>
+        <rect x="18" y="40" width="44" height="50" rx="8" fill="#e85d30"/>
+        <rect x="22" y="45" width="36" height="40" rx="5" fill="#ff8c42" opacity="0.25"/>
+        <line x1="40" y1="40" x2="40" y2="90" stroke="#c04020" stroke-width="1.5"/>
+        <rect x="9" y="42" width="12" height="34" rx="6" fill="#c68642"/>
+        <rect x="59" y="42" width="12" height="34" rx="6" fill="#c68642"/>
+        <rect x="27" y="90" width="11" height="20" rx="4" fill="#8B4513"/>
+        <rect x="42" y="90" width="11" height="20" rx="4" fill="#8B4513"/>
+        <circle cx="60" cy="68" r="10" fill="#ff6600" opacity="0.85"/>
+        <circle cx="57" cy="65" r="4" fill="#cc3300"/>
+        <circle cx="63" cy="71" r="3" fill="#cc3300"/>
+      </svg>
+      <div class="headline" style="font-size:20px">Amaka<br><span style="font-size:14px;font-family:'DM Sans',sans-serif;font-weight:400;opacity:0.7">Market woman · Lagos</span></div>
+      <div class="speech-bubble center">
+        <span class="speaker s-amaka">Amaka:</span> "My name is Amaka. Every morning I wake up at 4am to set up my stall. Business is not easy — but we dey manage. Life get its own way of going. In January 2023, I fit still make small profit. That was life. Not perfect, but manageable."
+      </div>
+    </div>
+
+    <!-- Scene 2: Meet Emeka -->
+    <div class="scene" id="s2" style="background:linear-gradient(160deg,#000d1a 0%,#001a3a 50%,#000d1a 100%)">
+      <div class="label">Character 2 · Abuja</div>
+      <svg width="75" height="108" viewBox="0 0 80 110">
+        <circle cx="40" cy="22" r="18" fill="#c68642"/>
+        <ellipse cx="40" cy="22" rx="13" ry="11" fill="#b5763a"/>
+        <circle cx="34" cy="20" r="2.5" fill="#1a1a1a"/><circle cx="46" cy="20" r="2.5" fill="#1a1a1a"/>
+        <path d="M35 28 Q40 32 45 28" stroke="#1a1a1a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <rect x="18" y="40" width="44" height="50" rx="6" fill="#2c3e6b"/>
+        <rect x="26" y="41" width="28" height="7" rx="3.5" fill="#fff" opacity="0.9"/>
+        <rect x="34" y="34" width="12" height="9" rx="2" fill="#111"/>
+        <rect x="36" y="32" width="8" height="4" rx="1.5" fill="#111"/>
+        <line x1="40" y1="48" x2="40" y2="90" stroke="#1e2d4f" stroke-width="1.5"/>
+        <rect x="9" y="42" width="12" height="34" rx="6" fill="#b5763a"/>
+        <rect x="59" y="42" width="12" height="34" rx="6" fill="#b5763a"/>
+        <rect x="27" y="90" width="11" height="20" rx="4" fill="#111a2e"/>
+        <rect x="42" y="90" width="11" height="20" rx="4" fill="#111a2e"/>
+        <rect x="54" y="58" width="20" height="13" rx="3" fill="#8B6914" opacity="0.6"/>
+      </svg>
+      <div class="headline" style="font-size:20px">Emeka<br><span style="font-size:14px;font-family:'DM Sans',sans-serif;font-weight:400;opacity:0.7">Civil servant · Abuja</span></div>
+      <div class="speech-bubble center">
+        <span class="speaker s-emeka">Emeka:</span> "I am Emeka. Same salary, same job, every month. I used to think that was security. But what nobody tells you is this — a salary is only as powerful as what it can buy. And when prices move faster than your pay, you feel it. Quietly. Every single day."
+      </div>
+    </div>
+
+    <!-- Scene 3: Meet Chidi -->
+    <div class="scene" id="s3" style="background:linear-gradient(160deg,#001a0d 0%,#003320 50%,#001a0d 100%)">
+      <div class="label">Character 3 · Port Harcourt</div>
+      <svg width="75" height="108" viewBox="0 0 80 110">
+        <circle cx="40" cy="22" r="18" fill="#c68642"/>
+        <ellipse cx="40" cy="22" rx="13" ry="11" fill="#a0622a"/>
+        <circle cx="34" cy="20" r="2.5" fill="#1a1a1a"/><circle cx="46" cy="20" r="2.5" fill="#1a1a1a"/>
+        <path d="M33 29 Q40 34 47 29" stroke="#1a1a1a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <rect x="18" y="40" width="44" height="50" rx="6" fill="#1d9e75"/>
+        <rect x="22" y="50" width="20" height="13" rx="3" fill="#fff" opacity="0.15"/>
+        <rect x="25" y="53" width="14" height="7" rx="2" fill="#fff" opacity="0.2"/>
+        <line x1="40" y1="40" x2="40" y2="90" stroke="#0f6e56" stroke-width="1.5"/>
+        <rect x="9" y="42" width="12" height="34" rx="6" fill="#a0622a"/>
+        <rect x="59" y="42" width="12" height="34" rx="6" fill="#a0622a"/>
+        <rect x="27" y="90" width="11" height="20" rx="4" fill="#0a3a20"/>
+        <rect x="42" y="90" width="11" height="20" rx="4" fill="#0a3a20"/>
+        <ellipse cx="16" cy="96" rx="14" ry="7" fill="#444"/>
+        <rect x="4" y="88" width="24" height="8" rx="4" fill="#555"/>
+      </svg>
+      <div class="headline" style="font-size:20px">Chidi<br><span style="font-size:14px;font-family:'DM Sans',sans-serif;font-weight:400;opacity:0.7">Business owner · Port Harcourt</span></div>
+      <div class="speech-bubble center">
+        <span class="speaker s-chidi">Chidi:</span> "I run a small provisions shop. Everything I sell, I have to move — and that means fuel. Always fuel. In 2023, petrol was ₦185. My delivery cost was manageable. My prices were competitive. My customers could afford what I sold. That was my world."
+      </div>
+    </div>
+
+    <!-- Scene 4: The turning point -->
+    <div class="scene" id="s4" style="background:linear-gradient(160deg,#1a0505 0%,#330a0a 50%,#1a0505 100%)">
+      <div class="label">The turning point · 2023–2026</div>
+      <div class="headline" style="font-size:18px">What happened to petrol prices?</div>
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="yr">Jan 2023</div>
+          <div class="amt">₦185</div>
+          <div class="chg">Baseline</div>
+        </div>
+        <div class="price-card" style="background:rgba(232,93,48,0.2);border-color:rgba(232,93,48,0.3)">
+          <div class="yr">Jun 2023</div>
+          <div class="amt">₦488</div>
+          <div class="chg" style="color:#ff8c42">+164%</div>
+        </div>
+        <div class="price-card" style="background:rgba(232,93,48,0.35);border-color:rgba(232,93,48,0.5)">
+          <div class="yr">Jan 2024</div>
+          <div class="amt">₦668</div>
+          <div class="chg" style="color:#ff7042">+261%</div>
+        </div>
+        <div class="price-card danger">
+          <div class="yr">Feb 2026</div>
+          <div class="amt">₦1,227</div>
+          <div class="chg">+563%</div>
+        </div>
+      </div>
+      <div class="body-text" style="margin-top:8px">Inflation also peaked at <span style="color:#ff8c42;font-weight:500">34.19%</span> in 2024. Food prices climbed relentlessly. For millions of ordinary Nigerians — something quietly shifted.</div>
+    </div>
+
+    <!-- Scene 5: Amaka's reality -->
+    <div class="scene" id="s5" style="background:linear-gradient(160deg,#1a0a00 0%,#3a1500 50%,#1a0a00 100%)">
+      <div class="label">Amaka's reality · 2024</div>
+      <svg width="55" height="80" viewBox="0 0 80 110">
+        <circle cx="40" cy="22" r="18" fill="#c68642"/><ellipse cx="40" cy="22" rx="13" ry="11" fill="#d4956a"/>
+        <circle cx="34" cy="20" r="2.5" fill="#3d2b1f"/><circle cx="46" cy="20" r="2.5" fill="#3d2b1f"/>
+        <path d="M35 29 Q40 27 45 29" stroke="#3d2b1f" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M26 10 Q40 2 54 10 Q50 0 40 0 Q30 0 26 10Z" fill="#8B4513"/>
+        <rect x="18" y="40" width="44" height="50" rx="8" fill="#e85d30"/>
+        <rect x="9" y="42" width="12" height="34" rx="6" fill="#c68642"/><rect x="59" y="42" width="12" height="34" rx="6" fill="#c68642"/>
+        <rect x="27" y="90" width="11" height="20" rx="4" fill="#8B4513"/><rect x="42" y="90" width="11" height="20" rx="4" fill="#8B4513"/>
+      </svg>
+      <div class="speech-bubble center">
+        <span class="speaker s-amaka">Amaka:</span> "Transport cost don go up. My suppliers increase price. I increase my price too — but my customers no get more money. So they buy less. My profit don shrink. I no dey expand again. I just dey... maintain."
+      </div>
+      <div class="speech-bubble center tinted-orange">
+        <span class="speaker s-amaka">Amaka:</span> "Before, I was saving small small. Now I dey use my savings to survive. <em>That is not the same thing.</em>"
+      </div>
+    </div>
+
+    <!-- Scene 6: Emeka's reality -->
+    <div class="scene" id="s6" style="background:linear-gradient(160deg,#000814 0%,#001228 50%,#000814 100%)">
+      <div class="label">Emeka's reality · 2024</div>
+      <svg width="55" height="80" viewBox="0 0 80 110">
+        <circle cx="40" cy="22" r="18" fill="#c68642"/><ellipse cx="40" cy="22" rx="13" ry="11" fill="#b5763a"/>
+        <circle cx="34" cy="20" r="2.5" fill="#1a1a1a"/><circle cx="46" cy="20" r="2.5" fill="#1a1a1a"/>
+        <path d="M35 28 Q40 32 45 28" stroke="#1a1a1a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <rect x="18" y="40" width="44" height="50" rx="6" fill="#2c3e6b"/>
+        <rect x="26" y="41" width="28" height="7" rx="3.5" fill="#fff" opacity="0.9"/>
+        <rect x="34" y="34" width="12" height="9" rx="2" fill="#111"/>
+        <rect x="9" y="42" width="12" height="34" rx="6" fill="#b5763a"/><rect x="59" y="42" width="12" height="34" rx="6" fill="#b5763a"/>
+        <rect x="27" y="90" width="11" height="20" rx="4" fill="#111a2e"/><rect x="42" y="90" width="11" height="20" rx="4" fill="#111a2e"/>
+      </svg>
+      <div class="speech-bubble center">
+        <span class="speaker s-emeka">Emeka:</span> "My salary has not changed. But rent up. Food up. Transport up. School fees for my children — up. I now calculate everything. Every naira. Every single decision."
+      </div>
+      <div class="speech-bubble center tinted-blue">
+        <span class="speaker s-emeka">Emeka:</span> "<em>I used to live. Now I budget. There is a difference between the two — and I feel that difference every morning.</em>"
+      </div>
+    </div>
+
+    <!-- Scene 7: Chidi's reality -->
+    <div class="scene" id="s7" style="background:linear-gradient(160deg,#001008 0%,#002015 50%,#001008 100%)">
+      <div class="label">Chidi's reality · 2024</div>
+      <svg width="55" height="80" viewBox="0 0 80 110">
+        <circle cx="40" cy="22" r="18" fill="#c68642"/><ellipse cx="40" cy="22" rx="13" ry="11" fill="#a0622a"/>
+        <circle cx="34" cy="20" r="2.5" fill="#1a1a1a"/><circle cx="46" cy="20" r="2.5" fill="#1a1a1a"/>
+        <path d="M33 29 Q40 34 47 29" stroke="#1a1a1a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <rect x="18" y="40" width="44" height="50" rx="6" fill="#1d9e75"/>
+        <rect x="9" y="42" width="12" height="34" rx="6" fill="#a0622a"/><rect x="59" y="42" width="12" height="34" rx="6" fill="#a0622a"/>
+        <rect x="27" y="90" width="11" height="20" rx="4" fill="#0a3a20"/><rect x="42" y="90" width="11" height="20" rx="4" fill="#0a3a20"/>
+      </svg>
+      <div class="speech-bubble center">
+        <span class="speaker s-chidi">Chidi:</span> "My delivery cost has tripled. To survive, I increased my prices. But my customers have less money too — so some stopped coming. I had to let my assistant go. Now I run everything alone."
+      </div>
+      <div class="speech-bubble center tinted-green">
+        <span class="speaker s-chidi">Chidi:</span> "I did not close my business. But the dream to grow it — to open a second shop — that dream is on hold. <em>For now, I am just keeping the door open.</em>"
+      </div>
+    </div>
+
+    <!-- Scene 8: The question -->
+    <div class="scene" id="s8" style="background:linear-gradient(160deg,#0f0c29 0%,#1a1560 50%,#0f0c29 100%)">
+      <div class="chars-row">
+        <div class="char-wrap">
+          <svg width="52" height="76" viewBox="0 0 80 110"><circle cx="40" cy="22" r="18" fill="#c68642"/><ellipse cx="40" cy="22" rx="13" ry="11" fill="#d4956a"/><circle cx="34" cy="20" r="2.5" fill="#3d2b1f"/><circle cx="46" cy="20" r="2.5" fill="#3d2b1f"/><path d="M26 10 Q40 2 54 10 Q50 0 40 0 Q30 0 26 10Z" fill="#8B4513"/><rect x="18" y="40" width="44" height="50" rx="8" fill="#e85d30"/><rect x="9" y="42" width="12" height="34" rx="6" fill="#c68642"/><rect x="59" y="42" width="12" height="34" rx="6" fill="#c68642"/><rect x="27" y="90" width="11" height="20" rx="4" fill="#8B4513"/><rect x="42" y="90" width="11" height="20" rx="4" fill="#8B4513"/></svg>
+          <div class="char-name-tag" style="color:#e85d30">Amaka</div>
+        </div>
+        <div class="char-wrap">
+          <svg width="52" height="76" viewBox="0 0 80 110"><circle cx="40" cy="22" r="18" fill="#c68642"/><ellipse cx="40" cy="22" rx="13" ry="11" fill="#b5763a"/><circle cx="34" cy="20" r="2.5" fill="#1a1a1a"/><circle cx="46" cy="20" r="2.5" fill="#1a1a1a"/><rect x="18" y="40" width="44" height="50" rx="6" fill="#2c3e6b"/><rect x="26" y="41" width="28" height="7" rx="3.5" fill="#fff" opacity="0.9"/><rect x="34" y="34" width="12" height="9" rx="2" fill="#111"/><rect x="9" y="42" width="12" height="34" rx="6" fill="#b5763a"/><rect x="59" y="42" width="12" height="34" rx="6" fill="#b5763a"/><rect x="27" y="90" width="11" height="20" rx="4" fill="#111a2e"/><rect x="42" y="90" width="11" height="20" rx="4" fill="#111a2e"/></svg>
+          <div class="char-name-tag" style="color:#3b8bd4">Emeka</div>
+        </div>
+        <div class="char-wrap">
+          <svg width="52" height="76" viewBox="0 0 80 110"><circle cx="40" cy="22" r="18" fill="#c68642"/><ellipse cx="40" cy="22" rx="13" ry="11" fill="#a0622a"/><circle cx="34" cy="20" r="2.5" fill="#1a1a1a"/><circle cx="46" cy="20" r="2.5" fill="#1a1a1a"/><rect x="18" y="40" width="44" height="50" rx="6" fill="#1d9e75"/><rect x="9" y="42" width="12" height="34" rx="6" fill="#a0622a"/><rect x="59" y="42" width="12" height="34" rx="6" fill="#a0622a"/><rect x="27" y="90" width="11" height="20" rx="4" fill="#0a3a20"/><rect x="42" y="90" width="11" height="20" rx="4" fill="#0a3a20"/></svg>
+          <div class="char-name-tag" style="color:#1d9e75">Chidi</div>
+        </div>
+      </div>
+      <div class="headline" style="font-size:22px;margin-top:8px">Are they living —<br>or just surviving?</div>
+      <div class="body-text" style="margin-top:6px;font-size:13px">That is what the data will tell us.</div>
+    </div>
+
+    <!-- Scene 9: Final -->
+    <div class="scene" id="s9" style="background:linear-gradient(160deg,#0f0c29 0%,#302b63 50%,#0f0c29 100%)">
+      <div class="label">The analysis begins</div>
+      <div class="headline">Surviving, Not Living</div>
+      <div class="body-text" style="font-size:13px">A Data Story of Economic Hardship in Nigeria<br>2023–2026</div>
+      <div class="body-text" style="margin-top:16px;font-size:11px;opacity:0.35;line-height:2">
+        Data: National Bureau of Statistics (NBS)<br>
+        Monthly CPI & Inflation Reports · PMS Price Watch · 2023–2026
+      </div>
+      <div class="body-text" style="margin-top:8px;font-size:12px;opacity:0.5;font-style:italic">"The numbers are not just statistics. They are people's lives."</div>
+    </div>
+
+  </div>
+
+  <div class="nav-bar">
+    <button id="prev-btn" onclick="navigate(-1)" disabled>Back</button>
+    <div class="dots" id="dots-container"></div>
+    <div class="scene-counter" id="counter">1 / 10</div>
+    <button id="next-btn" onclick="navigate(1)">Next</button>
+  </div>
+</div>
+
+<script>
+  const total = 10;
+  let current = 0;
+  const dotsContainer = document.getElementById('dots-container');
+  for(let i = 0; i < total; i++){
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.id = 'dot' + i;
+    dotsContainer.appendChild(dot);
+  }
+  function navigate(dir){
+    document.getElementById('s' + current).classList.remove('active');
+    document.getElementById('dot' + current).classList.remove('active');
+    current = Math.max(0, Math.min(total - 1, current + dir));
+    document.getElementById('s' + current).classList.add('active');
+    document.getElementById('dot' + current).classList.add('active');
+    document.getElementById('prev-btn').disabled = current === 0;
+    document.getElementById('next-btn').disabled = current === total - 1;
+    document.getElementById('counter').textContent = (current + 1) + ' / ' + total;
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight') navigate(1);
+    if(e.key === 'ArrowLeft') navigate(-1);
+  });
+</script>
+</body>
+</html>
