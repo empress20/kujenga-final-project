@@ -1,8 +1,11 @@
-# Surviving, Not Living: How the Cost of Living Changed in Nigeria (2023–2026)
+How the Cost of Living Changed in Nigeria (2023–2026)
 
 **Author:** Towoju Blessing Eniola
+
 **Course:** Kujenga Final Project
+
 **Country:** Nigeria
+
 **Date:** April 2026
 
 ## The Question
