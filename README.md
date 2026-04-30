@@ -1,4 +1,4 @@
-How the Cost of Living Changed in Nigeria (2023–2026)
+## How the Cost of Living Changed in Nigeria (2023–2026)
 
 **Author:** Towoju Blessing Eniola
 
